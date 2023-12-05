@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import {useState, useEffect} from 'react';
+import {
+    Button,
+    Radio
+} from 'antd';
+
+import {getAllStudent} from './client'
+
 import './App.css';
 
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [students, setStudents] = useState([]);
+
+  const fetchStudents = () =>
+      getAllStudent()
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setStudents(data);
+      })
+
+  useEffect( () => {
+    console.log("Component Mounted");
+    fetchStudents();
+  }, []
+);
+
+  
+  return <p>{students.length}</p>;
 }
 
 export default App;
