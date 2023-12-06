@@ -1,4 +1,4 @@
-package com.sobanscode.fsprofessional.student;
+package com.sobanscode.FSProfessional.student;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
